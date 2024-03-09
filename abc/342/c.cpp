@@ -18,16 +18,31 @@ template <typename T> inline T floor(T a,T b) {return a/b;}
 template <typename itr> inline void print(itr b,itr e){for(itr p=begin; p<end; p++) cout<<*p<<' ';cout<<endl;}
 inline int sign(ll i) {return i/abs(i);}
 
-ll N;
-int main() {
-    cin >> N;
-    ll ans = 1;
-    for (ll x = 2; x*x*x <= N; x++) {
-        string s = to_string(x * x * x);
-        string t = s;
+ll N, Q;
+string S;
 
-        reverse(s.begin(), s.end());
-        if (s == t) ans = x * x * x;
+int main() {
+    cin >> N >> S >> Q;
+
+    map<char,char> mp;
+
+    for (char c='a'; c<='z'; c++) mp[c] = c;
+
+    reps(q,Q) {
+        char c,d;
+        cin >> c >> d;
+
+        for (auto m : mp) {
+            if (m.second == c) {
+                mp[m.first] = d;
+            }
+        }
     }
-    cout << ans << endl;
+
+    rep(i,N) {
+        S[i] = mp[S[i]];
+    }
+
+    cout << S << endl;
+
 }

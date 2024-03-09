@@ -19,4 +19,27 @@ template <typename itr> inline void print(itr b,itr e){for(itr p=begin; p<end; p
 inline int sign(ll i) {return i/abs(i);}
 ll LL_MAX = __LONG_LONG_MAX__;
 
-int main() {}
+int N;
+ll Q[11], A[11], B[11];
+
+ll dv(ll q, ll b) {
+    return b == 0LL ? LL_MAX : q/b;
+}
+int main() {
+    cin >> N;
+    reps(i,N) cin >> Q[i];
+    reps(i,N) cin >> A[i];
+    reps(i,N) cin >> B[i];
+
+    ll aMax = LL_MAX;
+    reps(i,N) chmin(aMax,dv(Q[i],A[i]));
+
+    ll ans = 0;
+    for (ll a = 0; a <= aMax; a++) {
+        ll b = LL_MAX;
+        reps(i,N) chmin(b, dv(Q[i]-a*A[i],B[i]));
+        printf("%lld, %lld\n", a, b);
+        chmax(ans, a+b);
+    }
+    cout << ans << endl;
+}

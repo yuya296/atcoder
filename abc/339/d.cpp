@@ -19,4 +19,7 @@ template <typename itr> inline void print(itr b,itr e){for(itr p=begin; p<end; p
 inline int sign(ll i) {return i/abs(i);}
 ll LL_MAX = __LONG_LONG_MAX__;
 
-int main() {}
+ll N, A[200001];
+int main() {
+    
+}

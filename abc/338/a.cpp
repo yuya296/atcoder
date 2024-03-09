@@ -17,6 +17,15 @@ template <typename T> inline T ceil(T a,T b) {return (a+(b-1))/b;}
 template <typename T> inline T floor(T a,T b) {return a/b;}
 template <typename itr> inline void print(itr b,itr e){for(itr p=begin; p<end; p++) cout<<*p<<' ';cout<<endl;}
 inline int sign(ll i) {return i/abs(i);}
-ll LL_MAX = __LONG_LONG_MAX__;
 
-int main() {}
+string S;
+
+bool check(string s) {
+    if (s[0] >= 'a') return false; 
+    for_(i, 1, s.length()) if (s[i] <= 'Z') return false;
+    return true;
+} 
+int main() {
+    cin >> S;
+    cout << Yes(check(S)) << endl;
+}

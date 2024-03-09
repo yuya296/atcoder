@@ -2,7 +2,6 @@
 using namespace std;
 using ll=long long;
 using ull=unsigned long long;
-using P=pair<ll,ll>;
 #define pb push_back
 #define rep(i,n) for (int i=0; i<(n); i++)
 #define reps(i,n) for (int i=1; i<=(n); i++)
@@ -18,23 +17,19 @@ template <typename T> inline T floor(T a,T b) {return a/b;}
 template <typename itr> inline void print(itr b,itr e){for(itr p=begin; p<end; p++) cout<<*p<<' ';cout<<endl;}
 inline int sign(ll i) {return i/abs(i);}
 
-ll N;
+int N, P[101], Q;
 int main() {
     cin >> N;
-    vector<vector<int>> v;
     reps(i,N) {
-        vector<int> v_tmp;
-        reps(j,N) {
-            int x;
-            cin >> x;
-            if (x == 1) v_tmp.pb(j);
-        }
-        sort(v_tmp.begin(), v_tmp.end());
-        v.push_back(v_tmp);
+        int p;
+        cin >> p;
+        P[p] = i;
     }
+    cin >> Q;
 
-    rep(i,N) {
-        for (auto item:v[i]) cout<< (item) << " ";
-        cout << endl;
+    reps(q,Q) {
+        int A,B;
+        cin >> A >> B;
+        cout << (P[A] < P[B] ? A : B) << endl;
     }
 }

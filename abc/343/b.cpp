@@ -17,6 +17,24 @@ template <typename T> inline T ceil(T a,T b) {return (a+(b-1))/b;}
 template <typename T> inline T floor(T a,T b) {return a/b;}
 template <typename itr> inline void print(itr b,itr e){for(itr p=begin; p<end; p++) cout<<*p<<' ';cout<<endl;}
 inline int sign(ll i) {return i/abs(i);}
-ll LL_MAX = __LONG_LONG_MAX__;
 
-int main() {}
+ll N;
+int main() {
+    cin >> N;
+    vector<vector<int>> v;
+    reps(i,N) {
+        vector<int> v_tmp;
+        reps(j,N) {
+            int x;
+            cin >> x;
+            if (x == 1) v_tmp.pb(j);
+        }
+        sort(v_tmp.begin(), v_tmp.end());
+        v.push_back(v_tmp);
+    }
+
+    rep(i,N) {
+        for (auto item:v[i]) cout<< (item) << " ";
+        cout << endl;
+    }
+}

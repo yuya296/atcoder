@@ -19,4 +19,17 @@ template <typename itr> inline void print(itr b,itr e){for(itr p=begin; p<end; p
 inline int sign(ll i) {return i/abs(i);}
 ll LL_MAX = __LONG_LONG_MAX__;
 
-int main() {}
+
+ll N, A[200001];
+int main() {
+    cin >> N;
+    reps(i,N) cin >> A[i];
+
+    ll minimum = LL_MAX;
+    ll current = 0LL;
+    reps(i,N) {
+        current += A[i];
+        chmin(minimum,current);
+    }
+    cout << (current+max(-minimum,0LL)) << endl;
+}

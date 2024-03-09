@@ -18,34 +18,11 @@ template <typename T> inline T floor(T a,T b) {return a/b;}
 template <typename itr> inline void print(itr b,itr e){for(itr p=begin; p<end; p++) cout<<*p<<' ';cout<<endl;}
 inline int sign(ll i) {return i/abs(i);}
 
-ll N, T, point[200001];
+
+ll N, A[200001];
 int main() {
-    cin >> N >> T;
+    cin >> N;
+    reps(i,N) cin >> A[i];
 
-    unordered_map<ll,ll> hash;
-    hash[0] = N;
-    ll ans = 1;
-
-    vector<ll> ans_list;
-
-    reps(t,T) {
-        ll A,B;
-        cin >> A >> B;
-
-        ll before = point[A];
-        ll after = point[A] + B;
-        point[A] = after;
-
-        if (hash[before] == 1) ans -= 1;
-        hash[before] = hash[before] - 1;
-        if (hash[after] == 0) ans += 1;
-        hash[after] = hash[after] + 1;
-
-        ans_list.pb(ans);
-    }
-
-    for (auto val: ans_list) {
-        cout << val << endl;
-    }
 
 }

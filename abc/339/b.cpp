@@ -19,4 +19,41 @@ template <typename itr> inline void print(itr b,itr e){for(itr p=begin; p<end; p
 inline int sign(ll i) {return i/abs(i);}
 ll LL_MAX = __LONG_LONG_MAX__;
 
-int main() {}
+ll H,W,N,h,w;
+bool board[101][101];
+
+void move(ll dh, ll dw) {
+    h += dh;
+    w += dw;
+    if (h <= 0) h = H;
+    if (w <= 0) w = W;
+    if (h > H) h = 1;
+    if (w > W) w = 1;
+}
+
+int main() {
+    cin >> H >> W >> N;
+
+    P dims[] = {{-1,0},{0,1},{1,0},{0,-1}};
+    int idx = 0;
+
+    // 白:false, 黒:true
+    h = 1, w = 1;
+    reps(i,N) {
+        if (/* 白のとき */ !board[h][w]) {
+            board[h][w] = true;
+            idx = (idx+4+1)%4;
+        } else {
+            board[h][w] = false;
+            idx = (idx+4-1)%4;
+        }
+        move(dims[idx].first, dims[idx].second);
+    }
+
+    reps(ih,H) {
+        reps(iw,W) {
+            cout << (board[ih][iw]?'#':'.');
+        }
+        cout << endl;
+    }
+}

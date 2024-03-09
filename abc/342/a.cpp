@@ -18,13 +18,21 @@ template <typename T> inline T floor(T a,T b) {return a/b;}
 template <typename itr> inline void print(itr b,itr e){for(itr p=begin; p<end; p++) cout<<*p<<' ';cout<<endl;}
 inline int sign(ll i) {return i/abs(i);}
 
-int A,B;
+string S;
 int main() {
-    cin >> A >> B;
-    rep(i,9) {
-        if (i != A+B) {
-            cout << i << endl;
-            break;
+    cin >> S;
+
+    char ch1 = S[0];
+    if (S[1] != ch1) {
+        cout << ((S[2] == ch1)?2:1) << endl;
+        return 0;
+    }
+
+    for_(i,2,S.length()) {
+        if (S[i] != ch1) {
+            cout << i+1 << endl;
+            return 0;
         }
     }
+
 }
