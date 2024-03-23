@@ -3,3 +3,4 @@ a.out
 toolkit
 .DS_Store
 _archive
+*.dSYM/
